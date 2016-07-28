@@ -65,7 +65,7 @@ public class OTLogic {
     }
 
     public void setClothes(int clothes) {
-        this.clothes = this.clothes;
+        this.clothes = clothes;
     }
 
     public int getMisc() {
