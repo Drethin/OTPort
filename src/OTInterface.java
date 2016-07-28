@@ -10,6 +10,43 @@ public class OTInterface {
 
     public OTInterface(){
         scanner = new Scanner(System.in);
+        OTLogic logic = new OTLogic();
+    }
+    private void initialBuy(){
+        do {
+            System.out.println("HOW MUCH DO YOU WANT TO SPEND ON YOUR OXEN TEAM");
+            logic.setOxen(scanner.nextInt());
+            if(logic.getOxen <= 200)System.out.println("NOT ENOUGH");
+            if(logic.getOxen > 300) System.out.println("TOO MUCH");
+        }while(logic.getOxen() <= 200 || logic.getOxen() > 300);
+        do {
+            System.out.println("HOW MUCH DO YOU WANT TO SPEND ON FOOD");
+            logic.setFood(scanner.nextInt());
+            if(logic.getFood() <= 0)System.out.println("IMPOSSIBLE");
+        }while(logic.getFood() <= 0);
+        do {
+            System.out.println("HOW MUCH DO YOU WANT TO SPEND ON AMMUNITION");
+            logic.setAmmo(scanner.nextInt());
+            if(logic.getAmmo() <= 0)System.out.println("IMPOSSIBLE");
+        }while(logic.getAmmo() <= 0);
+        do {
+            System.out.println("HOW MUCH DO YOU WANT TO SPEND ON CLOTHING");
+            logic.setClothes(scanner.nextInt());
+            if(logic.getClothes() <= 0)System.out.println("IMPOSSIBLE");
+        }while(logic.getClothes() <= 0);
+        do {
+            System.out.println("HOW MUCH DO YOU WANT TO SPEND ON MISCELANEOUS SUPPLIES");
+            logic.setMisc(scanner.nextInt());
+            if(logic.getMisc() <= 0)System.out.println("IMPOSSIBLE");
+        }while(logic.getMisc() <= 0);
+        if(!logic.initMoney()){
+            System.out.println("YOU OVERSPENT--YOU ONLY HAD $700 TO SPEND.  BUY AGAIN");
+            initialBuy();
+        }else{
+            logic.initAmmo();
+            System.out.println("AFTER ALL YOUR PURCHASES, YOU NOW HAVE "+logic.getMoney()+" DOLLARS LEFT");
+            System.out.println("\nMONDAY MARCH 29 1847");
+        }
     }
 
     private void intro(){
