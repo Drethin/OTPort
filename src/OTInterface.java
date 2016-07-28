@@ -7,17 +7,18 @@ import java.util.Scanner;
  */
 public class OTInterface {
     Scanner scanner;
+    OTLogic logic;
 
     public OTInterface(){
         scanner = new Scanner(System.in);
-        OTLogic logic = new OTLogic();
+        logic = new OTLogic();
     }
     private void initialBuy(){
         do {
             System.out.println("HOW MUCH DO YOU WANT TO SPEND ON YOUR OXEN TEAM");
             logic.setOxen(scanner.nextInt());
-            if(logic.getOxen <= 200)System.out.println("NOT ENOUGH");
-            if(logic.getOxen > 300) System.out.println("TOO MUCH");
+            if(logic.getOxen() <= 200)System.out.println("NOT ENOUGH");
+            if(logic.getOxen() > 300) System.out.println("TOO MUCH");
         }while(logic.getOxen() <= 200 || logic.getOxen() > 300);
         do {
             System.out.println("HOW MUCH DO YOU WANT TO SPEND ON FOOD");
